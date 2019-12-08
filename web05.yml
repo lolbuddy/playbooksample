@@ -1,0 +1,13 @@
+---
+- hosts: web01
+  become: yes
+  tasks:
+         - name: installing tomcat
+           get_url: url=http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.49/bin/apache-tomcat-8.5.49.tar.gz dest=/root
+         - name: unarchive
+           unarchive: src=/root/apache-tomcat-8.5.49.tar.gz dest=/root remote_src=yes
+         - name: copy 
+           copy: src=/home/ubuntu/vprofile-v1.war dest=/root/apache-tomcat-8.5.49/webapps remote_src=yes
+         - name: shell
+           shell: src=/root/apache-tomcat-8.5.49/bin/shartup.sh
+...

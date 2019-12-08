@@ -1,0 +1,13 @@
+---
+- hosts: web02
+  become: yes
+  tasks:
+         - name: install tomcat on client
+           get_url: url=http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.49/bin/apache-tomcat-8.5.49.tar.gz dest=/root
+         - name: unarchive
+           unarchive: src=/root/apache-tomcat-8.5.49.tar.gz dest=/root remote_src=yes
+         - name: copy
+           copy: src=/home/ubuntu/vprofile-v1.war dest=/root/apache-tomcat-8.5.49/webapps
+         - name: shell
+           shell: src=/root/apache-tomcat-8.5.49/bin/startup.sh
+...

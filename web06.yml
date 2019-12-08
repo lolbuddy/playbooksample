@@ -1,0 +1,7 @@
+---
+- hosts: web01
+  become: yes
+  tasks:
+         - name: copy vprofile-v1
+           copy: src=/home/ubuntu/vprofile-v1.war dest=/root/apache-tomcat-8.5.49/webapps  remote_src=yes
+...
