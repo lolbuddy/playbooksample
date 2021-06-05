@@ -6,4 +6,5 @@
           apt: name=apache2 state=present
         - name: service start
           service: name=apache2 enabled=no
+        - name: install docker.io
 ...
